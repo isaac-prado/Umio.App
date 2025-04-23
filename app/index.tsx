@@ -1,81 +1,38 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { cssInterop } from 'nativewind'
+import './global.css'
+
+cssInterop(Image, { className: "style" });
 
 export default function SplashScreen() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView className="flex-1 bg-black p-5 justify-between">
       <StatusBar style="light" />
       
-      <View style={styles.logoContainer}>
+      <View className="items-center mt-10">
         <Image 
           source={require('@/assets/images/logo.png')} 
-          style={styles.logo}
-          resizeMode="contain"
+          style={{width: 80, height: 80}}
         />
       </View>
       
-      <View style={styles.burgerContainer}>
+      <View className="flex-1 justify-center items-center -mt-10">
         <Image 
           source={require('@/assets/images/hamburger.png')} 
-          style={styles.burger}
+          style={{width: 430}}
           resizeMode="contain"
         />
       </View>
       
-      <Text style={styles.tagline}>É coisa de outro mundo...</Text>
+      <Text className="text-white text-base font-medium mb-10 ml-5">É coisa de outro mundo...</Text>
       
       <Link href="/login" asChild>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Peça já!</Text>
+        <TouchableOpacity className="bg-[#EE6B10] rounded-3xl py-[15px] items-center mb-5 w-[300px] self-center">
+          <Text className="text-white text-xl">Peça já!</Text>
         </TouchableOpacity>
       </Link>
     </SafeAreaView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    padding: 20,
-    justifyContent: 'space-between',
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginTop: 80,
-  },
-  logo: {
-    width: 83,
-    height: 82,
-  },
-  burgerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: -40,
-  },
-  burger: {
-    width: 430,
-  },
-  tagline: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-    marginBottom: 40,
-    marginLeft: 20,
-  },
-  button: {
-    backgroundColor: '#EE6B10',
-    borderRadius: 25,
-    paddingVertical: 15,
-    alignItems: 'center',
-    marginBottom: 20,
-    width: 300,
-    alignSelf: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-  },
-}); 
+} 

@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
 
@@ -10,110 +10,46 @@ export default function LoginScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View className="flex-1 bg-black p-5">
       <StatusBar style="light" />
       
-      <View style={styles.logoContainer}>
+      <View className="items-center mt-10 mb-8">
         <Image 
           source={require('../assets/images/logo.png')} 
-          style={styles.logo}
+          style={{width: 150, height: 150}}
           resizeMode="contain"
         />
       </View>
       
-      <View style={styles.burgersRow}>
-        <Image source={require('@/assets/images/login-food2.png')} style={styles.smallBurger} />
-        <Image source={require('@/assets/images/login-food1.png')} style={styles.smallBurger} />
-        <Image source={require('@/assets/images/login-food3.png')} style={styles.smallBurger} />
-        <Image source={require('@/assets/images/login-food4.png')} style={styles.smallBurger} />
-        <Image source={require('@/assets/images/login-food5.png')} style={styles.smallBurger} />
+      <View className="flex-row justify-between mb-10 items-center">
+        <Image source={require('@/assets/images/login-food2.png')} style={{width: 61}} resizeMode="contain" />
+        <Image source={require('@/assets/images/login-food1.png')} style={{width: 61}} resizeMode="contain" />
+        <Image source={require('@/assets/images/login-food3.png')} style={{width: 61}} resizeMode="contain" />
+        <Image source={require('@/assets/images/login-food4.png')} style={{width: 61}} resizeMode="contain" />
+        <Image source={require('@/assets/images/login-food5.png')} style={{width: 61}} resizeMode="contain" />
       </View>
       
-      <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeText}>Bem-vindo ao UMIÓ!</Text>
-        <Text style={styles.loginText}>Login</Text>
+      <View className="mb-10">
+        <Text className="text-white text-2xl font-bold mb-[5px]">Bem-vindo ao UMIÓ!</Text>
+        <Text className="text-white text-base">Login</Text>
       </View>
       
-      <View style={styles.loginOptions}>
-        <TouchableOpacity style={styles.loginButton} onPress={handleGoogleLogin}>
-          <Image source={require('../assets/images/google.png')} style={styles.loginIcon} />
-          <Text style={styles.loginButtonText}>Entre com o Google</Text>
+      <View className="gap-[15px]">
+        <TouchableOpacity className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center" onPress={handleGoogleLogin}>
+          <Image source={require('../assets/images/google.png')} style={{width: 24, height: 24, marginRight: 10}} resizeMode="contain" />
+          <Text className="text-white text-base font-medium">Entre com o Google</Text>
         </TouchableOpacity>
         
-        <TouchableOpacity style={styles.loginButton}>
-          <Image source={require('../assets/images/apple.png')} style={styles.loginIcon} />
-          <Text style={styles.loginButtonText}>Entre com a Apple</Text>
+        <TouchableOpacity className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center">
+          <Image source={require('../assets/images/apple.png')} style={{width: 24, height: 24, marginRight: 10}} resizeMode="contain" />
+          <Text className="text-white text-base font-medium">Entre com a Apple</Text>
         </TouchableOpacity>
         
-        <TouchableOpacity style={styles.loginButton}>
-          <Image source={require('../assets/images/email.png')} style={styles.loginIcon} />
-          <Text style={styles.loginButtonText}>Entre com o E-mail</Text>
+        <TouchableOpacity className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center">
+          <Image source={require('../assets/images/email.png')} style={{width: 24, height: 24, marginRight: 10}} resizeMode="contain" />
+          <Text className="text-white text-base font-medium">Entre com o E-mail</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    padding: 20,
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginTop: 40,
-    marginBottom: 30,
-  },
-  logo: {
-    width: 150,
-    height: 150,
-  },
-  burgersRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 40,
-    alignItems: 'center',
-  },
-  smallBurger: {
-    width: 61,
-    resizeMode: 'contain',
-  },
-  welcomeContainer: {
-    marginBottom: 40,
-  },
-  welcomeText: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  loginText: {
-    color: 'white',
-    fontSize: 16,
-  },
-  loginOptions: {
-    gap: 15,
-  },
-  loginButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 25,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  loginIcon: {
-    width: 24,
-    height: 24,
-    marginRight: 10,
-    resizeMode: 'contain',
-  },
-  loginButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-}); 
+} 

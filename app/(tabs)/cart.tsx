@@ -1,22 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function CartScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Carrinho em breve!</Text>
+    <View className="flex-1 items-center justify-center">
+      <Text className="text-lg text-center mb-5">Carrinho</Text>
+      <Text className="text-center">Seu carrinho está vazio</Text>
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    color: 'white',
-    fontSize: 18,
-  },
-}); 
+} 
