@@ -9,18 +9,6 @@ import { foods } from '../data/foods';
 import { discounts } from '../data/discounts';
 
 export default function HomeScreen() {
-  // Função para agrupar os alimentos em pares (para manter o layout original)
-  const getFoodRows = () => {
-    const rows = [];
-    for (let i = 0; i < foods.length; i += 2) {
-      rows.push(foods.slice(i, i + 2));
-    }
-    return rows;
-  };
-
-  // Pares de alimentos para exibição em linha
-  const foodRows = getFoodRows();
-
   return (
     <SafeAreaView className="flex-1 bg-black pt-[10px]">
       <StatusBar style="light" />
@@ -83,21 +71,18 @@ export default function HomeScreen() {
           ))}
         </ScrollView>
         
-        <View className="px-[15px] mb-5">
-          {foodRows.map((row, rowIndex) => (
-            <View key={`row-${rowIndex}`} className={`flex-row justify-between ${rowIndex < foodRows.length - 1 ? 'mb-[15px]' : ''}`}>
-              {row.map(food => (
-                <FoodCard
-                  key={food.id}
-                  image={require('@/assets/images/hamburger.png')}
-                  name={food.name}
-                  description={food.description}
-                  price={food.price}
-                />
-              ))}
-            </View>
+        <View className="px-[15px] mb-5 flex flex-row flex-wrap justify-between gap-4">
+          {foods.map(food => (
+            <FoodCard
+              key={food.id}
+              image={require('@/assets/images/hamburger.png')}
+              name={food.name}
+              description={food.description}
+              price={food.price}
+            />
           ))}
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );
