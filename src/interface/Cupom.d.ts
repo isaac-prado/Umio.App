@@ -1,5 +1,3 @@
-import { DescontoPorcentagem, DescontoProduto } from "./Desconto"
-
 interface DescontoProduto {
     produtos: Produto[]
     valorDesconto: number
