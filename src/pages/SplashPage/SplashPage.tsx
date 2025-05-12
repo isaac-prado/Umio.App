@@ -1,35 +1,36 @@
-import { StatusBar, View, Image, Text, TouchableOpacity } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { View, Text, Image, SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import CustomButton from '../../components/CustomButton';
 
 interface SplashPageProps {
-  onPressStart: () => void
+  onPressStart: () => void;
 }
 
-export const SplashPage = ({
-  onPressStart
-}: SplashPageProps) => {
-    return (
-      <SafeAreaView>
-        <StatusBar />
-            
-        <View>
-          <Image
-            source={require("./../../assets/images/logo.png")}
-            style={{ width: 80, height: 80 }}
-          />
-        </View>
-
-        <View>
-          <Image />
-        </View>
-
-        
-        <TouchableOpacity 
-          className="bg-[#EE6B10] rounded-3xl py-[15px] items-center mb-5 w-[300px] self-center"
-          onPress={onPressStart}  
-        >
-          <Text className="text-white text-xl">Peça já!</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    )
-}
+export const SplashPage = ({ onPressStart }: SplashPageProps) => {
+  return (
+    <View className="flex-1 bg-black p-5">
+      <StatusBar style="light" />
+      
+      <View className="items-center mt-10">
+        <Image 
+          source={require('../../assets/images/logo.png')} 
+          style={{width: 80, height: 80}}
+        />
+      </View>
+      
+      <View className="flex-1 justify-center items-center -mt-10">
+        <Image 
+          source={require('../../assets/images/hamburger.png')} 
+          style={{width: 360}}
+          resizeMode="contain"
+        />
+      </View>
+      
+      <Text className="text-white text-base font-medium mb-5 ml-5">É coisa de outro mundo...</Text>
+      
+      <CustomButton onPress={onPressStart}>
+        Peça já!
+      </CustomButton>
+    </View>
+  );
+} 

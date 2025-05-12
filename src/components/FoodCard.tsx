@@ -11,7 +11,7 @@ type FoodCardProps = {
 
 export const FoodCard = ({ image, name, description, price, onPress }: FoodCardProps) => {
   return (
-    <View className="rounded-3xl px-2 pb-2 border border-orange-500 min-w-[130px]">
+    <TouchableOpacity className="rounded-3xl px-2 pb-2 border border-orange-500 min-w-[130px]" onPress={onPress}>
       <Image 
         source={image} 
         style={{width: '100%', height: 100}}
@@ -28,6 +28,6 @@ export const FoodCard = ({ image, name, description, price, onPress }: FoodCardP
       >
         <Plus size={14} color="white" />
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 } 
