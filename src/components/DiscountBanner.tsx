@@ -7,7 +7,7 @@ type DiscountBannerProps = {
   image: any;
 };
 
-export default function DiscountBanner({ title, discount, subtitle, image }: DiscountBannerProps) {
+export const DiscountBanner = ({ title, discount, subtitle, image }: DiscountBannerProps) => {
   return (
     <View className="bg-[#EE6B10] rounded-lg mb-5 h-[100px] flex-row justify-between overflow-hidden">
       <View className="p-[15px]">

@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../routes/types/RootStackList'
 import { HomePage } from '../../pages/HomePage/HomePage'
 
-type Navigation = NativeStackNavigationProp<RootStackParamList, 'home'>
+type Navigation = NativeStackNavigationProp<RootStackParamList, 'profile'>
 
 export default function HomePageScreen() {
   const { navigate } = useNavigation<Navigation>()
