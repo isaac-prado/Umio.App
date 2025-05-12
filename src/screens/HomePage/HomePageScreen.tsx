@@ -1,11 +1,14 @@
-import { View } from "react-native"
+import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { LoginPage } from '../../pages/Login/Login'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../routes/types/RootStackList'
+import { HomePage } from '../../pages/HomePage/HomePage'
 
-const HomePageScreen = () => {
-    return (
-        <View>
-            TELA SUPER FODA TEMPORÁRIA
-        </View>
-    )
+type Navigation = NativeStackNavigationProp<RootStackParamList, 'profile'>
+
+export default function HomePageScreen() {
+  const { navigate } = useNavigation<Navigation>()
+
+  return <HomePage onPressProfile={() => navigate('profile')} />
 }
-
-export default HomePageScreen

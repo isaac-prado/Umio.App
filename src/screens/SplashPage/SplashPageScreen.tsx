@@ -8,14 +8,7 @@ type Navigation = NativeStackNavigationProp<RootStackParamList, 'splash'>
 const SplashPageScreen = () => {
     const { navigate } = useNavigation<Navigation>()
 
-    const handleClick = () => {
-        console.log("Clickado")
-        navigate('login')
-    }
-
-    return (
-        <SplashPage onPressStart={handleClick}/>
-    )
+    return <SplashPage onPressStart={() => navigate('login')}/>
 }
 
 export default SplashPageScreen
