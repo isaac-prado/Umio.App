@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginPage from "../screens/Login/LoginScreen";
 import SplashPageScreen from "../screens/SplashPage/SplashPageScreen";
+import HomePageScreen from "../screens/HomePage/HomePageScreen";
 const Stack = createNativeStackNavigator();
 
 export function AuthRoutes() {

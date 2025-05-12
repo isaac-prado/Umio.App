@@ -1,12 +1,17 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { LoginPage } from '../../pages/Login/LoginPage'
-import { useAppNavigation } from '../../hooks/useAppNavigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../routes/types/RootStackList'
+
+type Navigation = NativeStackNavigationProp<RootStackParamList, 'home'>
 
 export default function LoginScreen() {
-  const { navigate } = useAppNavigation()
+  const { navigate } = useNavigation<Navigation>()
   
   const handleGoogleLogin = () => {  
     console.log('Clicou no botão de Google')
+    navigate('home')
   }
 
   const handleEmailLogin = () => {
