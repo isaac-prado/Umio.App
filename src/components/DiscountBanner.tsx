@@ -9,7 +9,7 @@ type DiscountBannerProps = {
 
 export default function DiscountBanner({ title, discount, subtitle, image }: DiscountBannerProps) {
   return (
-    <View className="bg-[#EE6B10] rounded-lg mx-[15px] mb-5 h-[100px] flex-row justify-between overflow-hidden">
+    <View className="bg-[#EE6B10] rounded-lg mb-5 h-[100px] flex-row justify-between overflow-hidden">
       <View className="p-[15px]">
         <Text className="text-white text-sm font-bold">{title}</Text>
         <Text className="text-white text-4xl font-bold leading-10">{discount}</Text>

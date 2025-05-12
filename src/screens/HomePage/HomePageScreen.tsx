@@ -1,11 +1,8 @@
 import { View } from "react-native"
+import { HomePage } from "../../pages/HomePage/HomePage"
 
 const HomePageScreen = () => {
-    return (
-        <View>
-            TELA SUPER FODA TEMPORÁRIA
-        </View>
-    )
+    return <HomePage />
 }
 
 export default HomePageScreen

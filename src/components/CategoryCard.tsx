@@ -21,32 +21,27 @@ export default function CategoryCard({
   const renderIcon = () => {
     switch (iconName) {
       case 'Utensils':
-        return <Utensils size={24} color="black" />;
+        return <Utensils size={18} color="black" />;
       case 'Pizza':
-        return <Pizza size={24} color="black" />;
+        return <Pizza size={18} color="black" />;
       case 'Salad':
-        return <Salad size={24} color="black" />;
+        return <Salad size={18} color="black" />;
       default:
-        return <Utensils size={24} color="black" />;
+        return <Utensils size={18} color="black" />;
     }
   };
 
   return (
     <TouchableOpacity 
-      className="w-[100px] items-center mr-[15px]"
       onPress={onPress}
+      className="flex flex-row items-center gap-2 bg-zinc-700 rounded-xl px-3 h-8"
     >
-      <View className="w-[60px] h-[60px] bg-white rounded-full items-center justify-center mb-[5px]">
+      <View className="w-6 h-6 bg-white rounded-full items-center justify-center">
         {renderIcon()}
       </View>
-      <View className="items-center">
-        <Text className={`text-sm font-bold ${isActive ? 'text-[#EE6B10]' : 'text-white'}`}>
-          {name}
-        </Text>
-        {description && (
-          <Text className="text-white text-xs">{description}</Text>
-        )}
-      </View>
+      <Text className={`text-xs font-semibold ${isActive ? 'text-[#EE6B10]' : 'text-white'}`}>
+        {name}
+      </Text>
     </TouchableOpacity>
   );
 } 
