@@ -5,9 +5,19 @@ const Stack = createNativeStackNavigator();
 
 export function AuthRoutes() {
   return (
-    <Stack.Navigator>
-        <Stack.Screen name="splash" component={SplashPageScreen}/>
-        <Stack.Screen name="login" component={LoginPage} />
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+    >
+        <Stack.Screen 
+          name="Splash"
+          component={SplashPageScreen}
+          options={{ title: "Umió de Todos" }}
+        />
+        <Stack.Screen
+          name="login"
+          component={LoginPage}
+          options={{ title: "Umió de Todos", animation: "default" }}
+        />
     </Stack.Navigator>  
   )
 }

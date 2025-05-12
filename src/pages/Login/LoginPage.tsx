@@ -4,9 +4,11 @@ import { StatusBar } from 'expo-status-bar'
 
 interface LoginPageProps {
   onGoogleLogin: () => void
+  onAppleLogin: () => void
+  onEmailLogin: () => void
 }
 
-export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
+export const LoginPage = ({ onGoogleLogin, onAppleLogin, onEmailLogin }: LoginPageProps) => {
   return (
     <View className="flex-1 bg-black p-5">
       <StatusBar style="light" />
@@ -25,16 +27,22 @@ export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
       <View className="gap-[15px]">
         <TouchableOpacity
           className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center"
-          onPress={onGoogleLogin}
+          onPress={(onGoogleLogin)}
         >
           <Text className="text-white text-base font-medium">Entre com o Google</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center">
+        <TouchableOpacity 
+          className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center"
+          onPress={onAppleLogin}  
+        >
           <Text className="text-white text-base font-medium">Entre com a Apple</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center">
+        <TouchableOpacity 
+          className="bg-transparent border border-white rounded-3xl py-[15px] px-5 flex-row items-center"
+          onPress={onEmailLogin}  
+        >
           <Text className="text-white text-base font-medium">Entre com o E-mail</Text>
         </TouchableOpacity>
       </View>

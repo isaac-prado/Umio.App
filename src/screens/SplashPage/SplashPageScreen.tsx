@@ -1,12 +1,10 @@
 import { useNavigation } from "@react-navigation/native"
 import { SplashPage } from "../../pages/SplashPage/SplashPage"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import { RootStackParamList } from "../../routes/types/RootStackList"
-
-type Navigation = NativeStackNavigationProp<RootStackParamList, 'splash'>
+import { useAppNavigation } from "../../hooks/useAppNavigation"
 
 const SplashPageScreen = () => {
-    const { navigate } = useNavigation<Navigation>()
+    const { navigate } = useAppNavigation()
 
     const handleClick = () => {
         console.log("Clickado")
