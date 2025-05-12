@@ -8,11 +8,16 @@ import CategoryCard from '../../components/CategoryCard';
 import { foods } from '../../data/foods';
 import FoodCard from '../../components/FoodCard';
 
-export const HomePage = () => {
+interface HomePageProps {
+  onProfileClick: () => void
+}
+
+
+export const HomePage = ({ onProfileClick }: HomePageProps) => {
   return (
     <SafeAreaView className="flex-1 bg-black pt-[10px] p-4 space-y-4">      
       <View className="flex-row justify-between items-center">
-        <TouchableOpacity className="w-[35px] h-[35px]">
+        <TouchableOpacity className="w-[35px] h-[35px]" onPress={onProfileClick}>
           <Image 
             source={require('../../assets/images/logo.png')} 
             style={{width: '100%', height: '100%'}}
