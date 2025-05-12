@@ -9,7 +9,7 @@ interface InputProps {
 
 export const Input = ({ placeholder, icon }: InputProps) => {
   return (
-    <View className="flex-row items-center bg-neutral-800 rounded-xl px-3 h-8">
+    <View className="flex-row items-center bg-neutral-800 rounded-xl px-3 h-10">
       <View className="mr-[10px] text-white">
         {icon && icon}
       </View>

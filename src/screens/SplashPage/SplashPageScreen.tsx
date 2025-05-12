@@ -6,14 +6,7 @@ import { useAppNavigation } from "../../hooks/useAppNavigation"
 const SplashPageScreen = () => {
     const { navigate } = useAppNavigation()
 
-    const handleClick = () => {
-        console.log("Clickado")
-        navigate('login')
-    }
-
-    return (
-        <SplashPage onPressStart={handleClick}/>
-    )
+    return <SplashPage onPressStart={() => navigate('login')}/>
 }
 
 export default SplashPageScreen

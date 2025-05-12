@@ -10,7 +10,7 @@ interface ProfilePageProps {
 
 export const ProfilePage = ({ onExitClick }: ProfilePageProps) => {
   return (
-    <SafeAreaView className="flex-1 bg-black pt-[10px] p-4 space-y-4">
+    <View className="flex-1 bg-black p-5">
       <View className="flex-row justify-between items-center mb-6">
         <TouchableOpacity>
           <ChevronLeft size={28} color="white" />
@@ -32,7 +32,7 @@ export const ProfilePage = ({ onExitClick }: ProfilePageProps) => {
         </View>
       </View>
       
-      <View className="space-y-4">
+      <View className="flex flex-col gap-4">
         <View>
           <Text className="text-white mb-1">Nome:</Text>
           <Input icon={<User size={16} color="white" />}/>
@@ -55,7 +55,7 @@ export const ProfilePage = ({ onExitClick }: ProfilePageProps) => {
         
         <View>
           <Text className="text-white mb-1">Endereço:</Text>
-          <View className="flex-row items-center bg-neutral-800 rounded-xl px-3 h-8">
+          <View className="flex-row items-center bg-neutral-800 rounded-xl px-3 h-10">
             <View className="mr-[10px] text-white">
               <MapPin size={16} color="white" />
             </View>
@@ -68,18 +68,12 @@ export const ProfilePage = ({ onExitClick }: ProfilePageProps) => {
           </View>
         </View>
       </View>
-
-      <TouchableOpacity className="items-center py-3">
-        <PrimaryButton onPress={() => {}}>
-          Enviar
-        </PrimaryButton>
-      </TouchableOpacity>
       
       <View className="flex-1 justify-end">
         <TouchableOpacity className="items-center py-3" onPress={onExitClick}>
           <Text className="text-white font-bold underline">SAIR</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 } 

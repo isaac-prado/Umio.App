@@ -10,5 +10,5 @@ type Navigation = NativeStackNavigationProp<RootStackParamList, 'profile'>
 export default function HomePageScreen() {
   const { navigate } = useNavigation<Navigation>()
 
-  return <HomePage onProfileClick={() => navigate('profile')} />
+  return <HomePage onPressProfile={() => navigate('profile')} />
 }
