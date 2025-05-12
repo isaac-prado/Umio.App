@@ -9,7 +9,7 @@ type FoodCardProps = {
   onPress?: () => void;
 };
 
-export default function FoodCard({ image, name, description, price, onPress }: FoodCardProps) {
+export const FoodCard = ({ image, name, description, price, onPress }: FoodCardProps) => {
   return (
     <View className="rounded-3xl px-2 pb-2 border border-orange-500 min-w-[130px]">
       <Image 

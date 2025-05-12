@@ -3,6 +3,7 @@ import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { cssInterop } from 'nativewind'
 import './global.css'
+import CustomButton from '../src/components/CustomButton';
 
 cssInterop(Image, { className: "style" });
 
@@ -29,9 +30,9 @@ export default function SplashScreen() {
       <Text className="text-white text-base font-medium mb-10 ml-5">É coisa de outro mundo...</Text>
       
       <Link href="/login" asChild>
-        <TouchableOpacity className="bg-[#EE6B10] rounded-3xl py-[15px] items-center mb-5 w-[300px] self-center">
-          <Text className="text-white text-xl">Peça já!</Text>
-        </TouchableOpacity>
+        <CustomButton>
+          Peça já!
+        </CustomButton>
       </Link>
     </SafeAreaView>
   );

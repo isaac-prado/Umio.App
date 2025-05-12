@@ -10,13 +10,13 @@ type CategoryCardProps = {
   onPress?: () => void;
 };
 
-export default function CategoryCard({ 
+export const CategoryCard = ({ 
   iconName, 
   name, 
   isActive = false, 
   description, 
   onPress 
-}: CategoryCardProps) {
+}: CategoryCardProps) => {
   
   const renderIcon = () => {
     switch (iconName) {

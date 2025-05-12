@@ -2,11 +2,13 @@ import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, TextInpu
 import { StatusBar } from 'expo-status-bar';
 import { MapPin, ChevronDown, Search, Bell } from 'lucide-react-native';
 import { discounts } from '../../data/discounts';
-import DiscountBanner from '../../components/DiscountBanner';
+import { DiscountBanner } from '../../components/DiscountBanner';
 import { categories } from '../../data/categories';
-import CategoryCard from '../../components/CategoryCard';
+import { CategoryCard } from '../../components/CategoryCard';
 import { foods } from '../../data/foods';
-import FoodCard from '../../components/FoodCard';
+import { FoodCard } from '../../components/FoodCard';
+import { Input } from '../../components/Input';
+import { Notification } from '../../components/Notification';
 
 interface HomePageProps {
   onProfileClick: () => void
@@ -29,20 +31,10 @@ export const HomePage = ({ onProfileClick }: HomePageProps) => {
           <Text className="text-white text-sm">Itajubá, Minas Gerais</Text>
           <ChevronDown size={12} color="#EE6B10" />
         </View>
-        <View className="rounded-full bg-[#B8B8B8] p-1.5">
-          <Bell size={20} color="#000" />
-        </View>
+        <Notification />
       </View>
       
-      <View className="flex-row items-center bg-zinc-700 rounded-xl px-3 h-8">
-        <Search size={20} color="#666" className="mr-[10px]" />
-        <TextInput
-          className="flex-1 text-white text-base h-full"
-          placeholder=""
-          placeholderTextColor="#666"
-        />
-      </View>
-      
+      <Input icon={<Search size={16} />} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Text className="text-white text-lg font-bold mb-2">Bem-vindo!</Text>
         
