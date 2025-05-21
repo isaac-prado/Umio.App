@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 
-export const api = axios.create({
-  baseURL: "UMIO_API_URL",
+export const umioApi: AxiosInstance = axios.create({
+  baseURL: "localhost:5108/api",
 })

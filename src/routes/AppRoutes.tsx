@@ -3,11 +3,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Home, ShoppingCart, User } from 'lucide-react-native';
 import CartListScreen from '../screens/Cart/CartListScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomePageScreen from '../screens/HomePage/HomePageScreen';
+import ProfilePageScreen from '../screens/ProfilePage/ProfilePageScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function BottomTab() {
+export default function BottomTab() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -61,7 +63,8 @@ function BottomTab() {
 export function AppRoutes() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="tabs" component={BottomTab} />
+      <Stack.Screen name="home" component={HomePageScreen} />
+      <Stack.Screen name="profile" component={ProfilePageScreen} />
     </Stack.Navigator>    
   );
 }

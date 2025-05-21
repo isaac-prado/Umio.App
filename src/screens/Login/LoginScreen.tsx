@@ -10,7 +10,6 @@ export default function LoginScreen() {
   const { navigate } = useNavigation<Navigation>()
   
   const handleGoogleLogin = () => {  
-    console.log('Clicou no botão de Google')
     navigate('home')
   }
 
