@@ -3,6 +3,7 @@ import LoginPage from "../screens/Login/LoginScreen";
 import SplashPageScreen from "../screens/SplashPage/SplashPageScreen";
 import HomePageScreen from "../screens/HomePage/HomePageScreen";
 import ProfilePageScreen from "../screens/ProfilePage/ProfilePageScreen";
+import NotificationsPageScreen from "../screens/NotificationsPage/NotificationsPageScreen";
 import BottomTab from "./AppRoutes";
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export function AuthRoutes() {
       <Stack.Screen name="home" component={HomePageScreen} />
       <Stack.Screen name="profile" component={ProfilePageScreen} />
       <Stack.Screen name="main" component={BottomTab} />
+      <Stack.Screen name="notifications" component={NotificationsPageScreen} />
     </Stack.Navigator>  
   )
 }

@@ -3,4 +3,5 @@ export type RootStackParamList = {
   splash: undefined
   home: undefined
   profile: undefined
+  notifications: undefined
 }

@@ -10,11 +10,12 @@ import { Input } from '../../components/Input';
 import { Notification } from '../../components/Notification';
 
 interface HomePageProps {
-  onPressProfile: () => void
+  onPressProfile: () => void;
+  onPressNotifications: () => void;
 }
 
 
-export const HomePage = ({ onPressProfile }: HomePageProps) => {
+export const HomePage = ({ onPressProfile, onPressNotifications }: HomePageProps) => {
   return (
     <View className="flex-1 bg-black p-5">  
       <View className="flex-row justify-between items-center">
@@ -30,7 +31,9 @@ export const HomePage = ({ onPressProfile }: HomePageProps) => {
           <Text className="text-white text-sm">Itajubá, Minas Gerais</Text>
           <ChevronDown size={12} color="#EE6B10" />
         </View>
-        <Notification />
+        <TouchableOpacity onPress={onPressNotifications}>
+          <Notification />
+        </TouchableOpacity>
       </View>
       
       <View className="my-4">
