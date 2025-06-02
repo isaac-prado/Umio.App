@@ -1,23 +1,22 @@
 import { Search } from "lucide-react-native"
-import { View } from "react-native"
+import { TextInputProps, View } from "react-native"
 import { TextInput } from "react-native"
 
-interface InputProps {
+interface InputProps extends TextInputProps {
   placeholder?: string
   icon?: React.ReactNode
 }
 
-export const Input = ({ placeholder, icon, value }: InputProps & { value?: string }) => {
+export const Input: React.FC<InputProps> = ({ placeholder, icon, value, ...props }) => {
   return (
     <View className="flex-row items-center bg-neutral-800 rounded-xl px-3 h-10">
-      <View className="mr-[10px] text-white">
-        {icon && icon}
-      </View>
+      {icon && <View className="mr-[10px]">{icon}</View>}
       <TextInput
         className="flex-1 text-white text-base h-full"
-        placeholder={placeholder || ''}
+        placeholder={placeholder}
         placeholderTextColor="#666"
         value={value}
+        {...props}
       />
     </View>
   )

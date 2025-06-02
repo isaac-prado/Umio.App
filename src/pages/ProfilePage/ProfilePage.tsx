@@ -1,22 +1,18 @@
 import { View, Text, Image, TouchableOpacity, Button, ScrollView, SafeAreaView, TextInput } from 'react-native';
 import { Input } from '../../components/Input';
 import { Notification } from '../../components/Notification';
-import { User, Phone, Mail, Lock, MapPin, ChevronLeft, ChevronDown, Bell } from 'lucide-react-native';
+import { User, Phone, Mail, MapPin, ChevronLeft, ChevronDown, Bell } from 'lucide-react-native';
 import { Cliente } from '../../interface/Cliente';
 import { useCallback } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../hooks/useAppNavigation';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
 
 interface ProfilePageProps {
   cliente: Cliente
 }
-type Navigation = NativeStackNavigationProp<RootStackParamList, 'login'>
-
 export const ProfilePage = ({ 
   cliente,
 }: ProfilePageProps) => {
-  const { navigate } = useNavigation<Navigation>()
+  const { navigate } = useAppNavigation()
   console.log(cliente)
 
   const handleGoBack = useCallback(() => navigate('home') , [navigate])
@@ -89,7 +85,7 @@ export const ProfilePage = ({
               className="flex-1 text-white text-base h-full"
               placeholder="Digite seu CEP"
               placeholderTextColor="#666"
-              value={cliente.endereco.rua}
+              //value={cliente?.endereco.rua ?? ""}
             />
             <ChevronDown size={16} color="white" />
           </View>

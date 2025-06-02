@@ -1,18 +1,37 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, Image, Pressable, SafeAreaView } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import { LockKeyhole, Mail, Apple, Check } from 'lucide-react-native'
+import { LockKeyhole, Mail, Check } from 'lucide-react-native'
 import { Input } from '../../components/Input'
 import CustomButton from '../../components/CustomButton'
+import { useForm, Controller } from 'react-hook-form'
 
 interface LoginPageProps {
   onGoogleLogin: () => void
   onAppleLogin: () => void
-  onEmailLogin: () => void
+  onEmailLogin: (email: string, password: string) => void
 }
 
-export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
+type FormValues = {
+  email: string
+  password: string
+}
+
+export const LoginPage = ({onGoogleLogin}: LoginPageProps) => {
   const [rememberMe, setRememberMe] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid }
+  } = useForm<FormValues>({
+    mode: 'onChange',
+    defaultValues: { email: '', password: '' }
+  })
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data.email, data.password)
+  }
 
   return (
     <View className="flex-1 bg-black p-5">
@@ -40,8 +59,47 @@ export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
       </View>
 
       <View className="gap-[15px] mb-3">
-        <Input placeholder="E-mail" icon={<Mail size={16} color="white" />}/>
-        <Input placeholder="Senha" icon={<LockKeyhole size={16} color="white" />}/>
+        <Controller
+          control={control}
+          name="email"
+          rules={{
+            required: 'E-mail é obrigatório',
+            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Formato de e-mail inválido' }
+          }}
+          render={({ field: { onChange, value } }) => (
+            <>
+              <Input
+                placeholder="E-mail"
+                icon={<Mail size={16} color="white" />}
+                keyboardType="email-address"
+                value={value}
+                onChangeText={onChange}
+              />
+              {errors.email && <Text className="text-red-500 text-xs mt-1">{errors.email.message}</Text>}
+            </>
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          rules={{
+            required: 'Senha é obrigatória',
+            minLength: { value: 6, message: 'A senha precisa ter ao menos 6 caracteres' }
+          }}
+          render={({ field: { onChange, value } }) => (
+            <>
+              <Input
+                placeholder="Senha"
+                icon={<LockKeyhole size={16} color="white" />}
+                secureTextEntry
+                value={value}
+                onChangeText={onChange}
+              />
+              {errors.password && <Text className="text-red-500 text-xs mt-1">{errors.password.message}</Text>}
+            </>
+          )}
+        />
       </View>
       
       <View className="flex-row justify-between mb-8">
@@ -60,10 +118,10 @@ export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
         </TouchableOpacity>
       </View>
 
-      <CustomButton 
-        className="bg-[#EE6B10] w-full mb-8 rounded-[20px] py-[5px]"
+      <CustomButton
+        className={`bg-[#EE6B10] w-full mb-8 rounded-[20px] py-[5px] ${!isValid ? 'opacity-50' : ''}`}
         textClassName="text-[17px] font-bold"
-        onPress={onGoogleLogin}
+        onPress={handleSubmit(onSubmit)}
       >
         Login
       </CustomButton>
@@ -73,8 +131,6 @@ export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
         <Text className="mx-4 text-white font-normal text-base">Ou faça login com</Text>
         <View className="flex-1 h-[0.5px] bg-orange-500" />
       </View>
-
-
 
       <View className="flex-row justify-center gap-5 mb-8">
 
@@ -101,7 +157,6 @@ export const LoginPage = ({ onGoogleLogin }: LoginPageProps) => {
         </TouchableOpacity>
       </View>
 
-      {/* Link para cadastro */}
       <View className="flex-row justify-center items-center">
         <Text className="text-white text-xs font-normal">Ainda não possui cadastro? </Text>
         <TouchableOpacity>

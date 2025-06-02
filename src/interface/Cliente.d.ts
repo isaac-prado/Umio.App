@@ -5,9 +5,9 @@ export interface Cliente {
     id: string
     nome: string
     email: string
-    telefone: string
+    telefone?: string
     pontos: number
-    //senha: string
-    endereco: Endereco
-    pedidos: Pedido | []
+    senha: string
+    endereco?: Endereco
+    pedidos?: Pedido | []
 }
