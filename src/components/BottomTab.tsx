@@ -1,8 +1,6 @@
-// src/routes/BottomTab.tsx
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Home, ShoppingCart, User, Bell } from 'lucide-react-native'
-
 import HomePageScreen from '../screens/HomePage/HomePageScreen'
 import CartListScreen from '../screens/Cart/CartListScreen'
 import ProfilePageScreen from '../screens/ProfilePage/ProfilePageScreen'
@@ -22,11 +20,12 @@ export default function BottomTab() {
           height: 60,
           paddingBottom: 5
         },
-        headerShown: false
+        headerShown: false,
+        animation: 'shift',
       }}
     >
       <Tab.Screen
-        name="HomeTab"
+        name="Home"
         component={HomePageScreen}
         options={{
           title: 'Início',
@@ -35,7 +34,7 @@ export default function BottomTab() {
       />
 
       <Tab.Screen
-        name="CartTab"
+        name="Cart"
         component={CartListScreen}
         options={{
           title: 'Pedidos',
@@ -44,7 +43,7 @@ export default function BottomTab() {
       />
 
       <Tab.Screen
-        name="NotificationsTab"
+        name="Notifications"
         component={NotificationsPageScreen}
         options={{
           title: 'Notificações',
@@ -53,7 +52,7 @@ export default function BottomTab() {
       />
 
       <Tab.Screen
-        name="ProfileTab"
+        name="Profile"
         component={ProfilePageScreen}
         options={{
           title: 'Perfil',

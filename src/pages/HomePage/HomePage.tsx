@@ -14,12 +14,11 @@ interface HomePageProps {
   onPressNotifications: () => void;
 }
 
-
-export const HomePage = ({ onPressProfile, onPressNotifications }: HomePageProps) => {
+export const HomePage = ({ onPressNotifications }: HomePageProps) => {
   return (
     <View className="flex-1 bg-black p-5">  
       <View className="flex-row justify-between items-center">
-        <TouchableOpacity className="w-[35px] h-[35px]" onPress={onPressProfile}>
+        <TouchableOpacity className="w-[35px] h-[35px]">
           <Image 
             source={require('../../assets/images/logo.png')} 
             style={{width: '100%', height: '100%'}}

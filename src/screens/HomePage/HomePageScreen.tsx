@@ -1,21 +1,14 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../routes/types/RootStackList";
 import { HomePage } from "../../pages/HomePage/HomePage";
-
-type Navigation = NativeStackNavigationProp<
-  RootStackParamList,
-  "profile" | "notifications"
->;
+import { useAppNavigation } from "../../hooks/useAppNavigation";
 
 export default function HomePageScreen() {
-  const { navigate } = useNavigation<Navigation>();
+  const { navigate } = useAppNavigation();
 
   return (
     <HomePage
-      onPressProfile={() => navigate("profile")}
-      onPressNotifications={() => navigate("notifications")}
+      onPressProfile={() => navigate("Profile")}
+      onPressNotifications={() => navigate("Notifications")}
     />
   );
 }

@@ -1,25 +1,17 @@
-// import { AuthRoutes } from "./AuthRoutes";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { useAuth } from "../context/useAuth";
-// import { AppRoutes } from "./AppRoutes";
+import { ActivityIndicator, View } from "react-native"
+import { useAuth } from "../context/useAuth"
+import { AppRoutes } from "./AppRoutes"
+import { AuthRoutes } from "./AuthRoutes"
 
-// export function RouteSelector() {
-//   const RootStack = createNativeStackNavigator()
- 
-//   const { isLoggedIn, isReady } = useAuth()
+export function RouteSelector() {
+  const { isLoggedIn, isReady } = useAuth()
 
-//   if (!isReady) {
-//     console.log("passou por aqui?")
-//     return null
-//   }
-
-//   return (
-//     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-//       {isLoggedIn() ? (
-//         <RootStack.Screen name="App" component={AppRoutes} />
-//       ) : (
-//         <RootStack.Screen name="Auth" component={AuthRoutes} />
-//       )}
-//     </RootStack.Navigator>
-//   )
-// }
+    if (!isReady) {
+      return (
+        <View style={{ flex: 1, backgroundColor: 'black' }}>
+          <ActivityIndicator size="large" color="#EE6B10" />
+        </View>
+      )
+    }
+    return isLoggedIn() ? <AppRoutes /> : <AuthRoutes />
+}

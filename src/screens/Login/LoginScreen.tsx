@@ -1,18 +1,13 @@
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
 import { LoginPage } from '../../pages/Login/LoginPage'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RootStackParamList } from '../../routes/types/RootStackList'
 import { useAuth } from '../../context/useAuth'
-
-type Navigation = NativeStackNavigationProp<RootStackParamList, 'home'>
+import { useAppNavigation } from '../../hooks/useAppNavigation'
 
 export default function LoginScreen() {
-  const { navigate } = useNavigation<Navigation>()
   const { loginUser } = useAuth()
   
   const handleGoogleLogin = () => {  
-    navigate('home')
+    console.log("Clickou google!")
   }
 
   const handleAppleLogin = () => {
