@@ -6,11 +6,12 @@ interface LoginResponse {
     ok: boolean
 }
 
-export const loginApi = async (email: string, password: string) => {
+export const loginApi = async (email: string, senha: string) => {
     try {
-        const data = await umioApi.post<LoginResponse>("/login", {
+        console.log(`[loginApi] POST ${umioApi.defaults.baseURL}/Login`)
+        const data = await umioApi.post<LoginResponse>("/Login", {
             email: email,
-            password: password,
+            senha: senha,
         })
 
         return data

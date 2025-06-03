@@ -5,32 +5,37 @@ import { LockKeyhole, Mail, Check } from 'lucide-react-native'
 import { Input } from '../../components/Input'
 import CustomButton from '../../components/CustomButton'
 import { useForm, Controller } from 'react-hook-form'
+import { useAuth } from '../../context/useAuth'
 
 interface LoginPageProps {
   onGoogleLogin: () => void
   onAppleLogin: () => void
-  onEmailLogin: (email: string, password: string) => void
+  onEmailLogin: (email: string, senha: string) => void
 }
 
 type FormValues = {
   email: string
-  password: string
+  senha: string
 }
 
-export const LoginPage = ({onGoogleLogin}: LoginPageProps) => {
+export const LoginPage: React.FC<LoginPageProps> = ({
+  onGoogleLogin,
+  onAppleLogin,
+  onEmailLogin
+}: LoginPageProps) => {
   const [rememberMe, setRememberMe] = useState(false);
-
+  
   const {
     control,
     handleSubmit,
     formState: { errors, isValid }
   } = useForm<FormValues>({
     mode: 'onChange',
-    defaultValues: { email: '', password: '' }
+    defaultValues: { email: '', senha: '' }
   })
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data.email, data.password)
+  const onSubmit = async (data: FormValues) => {
+    onEmailLogin(data.email, data.senha)
   }
 
   return (
@@ -82,7 +87,7 @@ export const LoginPage = ({onGoogleLogin}: LoginPageProps) => {
 
         <Controller
           control={control}
-          name="password"
+          name="senha"
           rules={{
             required: 'Senha é obrigatória',
             minLength: { value: 6, message: 'A senha precisa ter ao menos 6 caracteres' }
@@ -96,7 +101,7 @@ export const LoginPage = ({onGoogleLogin}: LoginPageProps) => {
                 value={value}
                 onChangeText={onChange}
               />
-              {errors.password && <Text className="text-red-500 text-xs mt-1">{errors.password.message}</Text>}
+              {errors.senha && <Text className="text-red-500 text-xs mt-1">{errors.senha.message}</Text>}
             </>
           )}
         />

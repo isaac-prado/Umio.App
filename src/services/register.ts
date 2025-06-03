@@ -1,11 +1,11 @@
 import { Cliente } from "../interface/Cliente"
 import { umioApi } from "./umioApi"
 
-export const registerApi = async (email: string, password: string) => {
+export const registerApi = async (email: string, senha: string) => {
     try {
         const data = await umioApi.post<Cliente>("/register", {
             email: email,
-            password: password,
+            senha: senha,
         })
 
         return data
