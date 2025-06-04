@@ -19,7 +19,6 @@ export default function LoginScreen() {
     try {
       await loginUser(email, senha);
     } catch (error: any) {
-      console.log(error);
       Toast.show({
         type: "error",
         text1: "Login Incorreto!",
