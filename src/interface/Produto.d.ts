@@ -1,15 +1,18 @@
-import { Categoria } from "./Categoria"
-import { Cupom } from "./Cupom"
+import { Categoria } from "./Categoria";
+import { Cupom } from "./Cupom";
 
 export interface Produto {
-    id: string
-    nome: string
-    descricao: string
-    categoria: Categoria
-    comentarios: string
-    imagem: string
-    habilitarAdicionais: boolean
-    habilitarMolhos: boolean
-    habilitarAcompanhamentos: boolean
-    cupom?: Cupom
+  id: string;
+  nome: string;
+  preco: number;
+  descricao: string;
+  imagem: string;
+  categoriaId: string;
+  ativo: boolean;
+
+  //   habilitarAdicionais: boolean;
+  //   habilitarMolhos: boolean;
+  //   habilitarAcompanhamentos: boolean;
+  //   cupom?: Cupom;
+  //   comentarios: string;
 }
