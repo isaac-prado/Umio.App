@@ -21,7 +21,7 @@ interface HomePageProps {
 }
 
 export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
-  const [selectedCategoria, setSelectedCategoria] = useState<string | null>(
+  const [selectedCategoria, setSelectedCategoria] = useState<number | null>(
     null,
   );
 
@@ -32,7 +32,9 @@ export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
 
   const filteredProdutos = useMemo(() => {
     if (!selectedCategoria) return produtos;
-    return produtos.filter((p) => p.categoriaId === selectedCategoria);
+    return produtos.filter(
+      (p) => parseInt(p.categoriaId) === selectedCategoria,
+    );
   }, [produtos, selectedCategoria]);
 
   return (
@@ -66,7 +68,6 @@ export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
         {discounts.map((discount) => (
           <DiscountBanner
             key={discount.id}
-            title={discount.title}
             discount={discount.discount}
             subtitle={discount.subtitle}
             image={require("../../assets/images/hamburger.png")}
@@ -94,8 +95,8 @@ export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
                 <CategoryCard
                   key={categoria.id}
                   name={categoria.categoria}
-                  isActive={selectedCategoria === categoria.id.toString()}
-                  onPress={() => setSelectedCategoria(categoria.id.toString())}
+                  isActive={selectedCategoria === categoria.id}
+                  onPress={() => setSelectedCategoria(categoria.id)}
                 />
               ))
             )}
