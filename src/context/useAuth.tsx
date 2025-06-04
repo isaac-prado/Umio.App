@@ -39,7 +39,6 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
           const decodedJwt = jwtDecode<jwtPayload>(
             storedToken.replace("Bearer ", ""),
           );
-          console.log("O TOKEN DECODIFICADO: ", decodedJwt);
           const clienteIdFromToken =
             decodedJwt[
               "http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata"
@@ -78,7 +77,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
         throw new Error("Email ou senha incorretos!");
       }
     } catch (error) {
-      throw new Error("Erro no LoginUser");
+      console.log(error);
     }
   };
 
