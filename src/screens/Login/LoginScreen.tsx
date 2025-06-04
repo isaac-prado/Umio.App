@@ -1,7 +1,8 @@
 import React from "react";
 import { LoginPage } from "../../pages/Login/LoginPage";
 import { useAuth } from "../../context/useAuth";
-import { useAppNavigation } from "../../hooks/useAppNavigation";
+import Toast from "react-native-toast-message";
+import { AxiosError } from "axios";
 
 export default function LoginScreen() {
   const { loginUser } = useAuth();
@@ -17,8 +18,13 @@ export default function LoginScreen() {
   const handleEmailLogin = async (email: string, senha: string) => {
     try {
       await loginUser(email, senha);
-    } catch (error) {
-      console.log("ERRO NO HANDLE EMAIL: ", error);
+    } catch (error: any) {
+      Toast.show({
+        type: "error",
+        text1: "Login Incorreto!",
+        text2: "Verifique suas credenciais e tente novamente",
+        position: "top",
+      });
     }
   };
 
