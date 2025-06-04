@@ -10,7 +10,7 @@ import { Notification } from "../../components/Notification";
 
 import { Produto } from "../../interface/Produto";
 
-import { categories } from "../../data/categories";
+import { useCategoriasQuery } from "../../hooks/useCategoriasQuery";
 import { foods } from "../../data/foods";
 import { discounts } from "../../data/discounts";
 
@@ -21,13 +21,20 @@ interface HomePageProps {
 }
 
 export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
-  const [selectedCategoria, setSelectedCategoria] = useState<string | null>(
+  const [selectedCategoria, setSelectedCategoria] = useState<number | null>(
     null,
   );
 
+  const { data: categorias = [], isLoading: loadingCategorias } =
+    useCategoriasQuery();
+
+  console.log(categorias);
+
   const filteredProdutos = useMemo(() => {
     if (!selectedCategoria) return produtos;
-    return produtos.filter((p) => p.categoriaId === selectedCategoria);
+    return produtos.filter(
+      (p) => parseInt(p.categoriaId) === selectedCategoria,
+    );
   }, [produtos, selectedCategoria]);
 
   return (
@@ -61,7 +68,6 @@ export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
         {discounts.map((discount) => (
           <DiscountBanner
             key={discount.id}
-            title={discount.title}
             discount={discount.discount}
             subtitle={discount.subtitle}
             image={require("../../assets/images/hamburger.png")}
@@ -75,21 +81,25 @@ export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
         >
           <View className="flex flex-row gap-2">
             <CategoryCard
-              iconName="Utensils"
               name="Todos"
               isActive={selectedCategoria === null}
               onPress={() => setSelectedCategoria(null)}
             />
 
-            {categories.map((category) => (
-              <CategoryCard
-                key={category.id}
-                iconName={category.iconName}
-                name={category.name}
-                isActive={selectedCategoria === category.id.toString()}
-                onPress={() => setSelectedCategoria(category.id.toString())}
-              />
-            ))}
+            {loadingCategorias ? (
+              <Text className="text-white text-sm">
+                Carregando categorias...
+              </Text>
+            ) : (
+              categorias.map((categoria) => (
+                <CategoryCard
+                  key={categoria.id}
+                  name={categoria.categoria}
+                  isActive={selectedCategoria === categoria.id}
+                  onPress={() => setSelectedCategoria(categoria.id)}
+                />
+              ))
+            )}
           </View>
         </ScrollView>
 
