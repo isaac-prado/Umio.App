@@ -1,50 +1,65 @@
-import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
-import { Input } from '../../components/Input';
-import { User, Phone, Mail, MapPin, ChevronLeft, ChevronDown, Bell } from 'lucide-react-native';
-import { useAuth } from '../../context/useAuth';
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import { Input } from "../../components/Input";
+import { User, Phone, Mail, MapPin, ChevronDown } from "lucide-react-native";
+import { useAuth } from "../../context/useAuth";
+import { Cliente } from "../../interface/Cliente";
 
-export const ProfilePage = () => {
-  const { logout } = useAuth()
+interface ProfilePageProps {
+  nome: string;
+  email: string;
+  telefone: string;
+  pontos: number;
+  onChange: (
+    campo: keyof Omit<Cliente, "id" | "senha" | "endereco" | "pedidos">,
+    valor: string | number,
+  ) => void;
+  onSalvar: () => void;
+  onLogout: () => void;
+}
 
-  const handleLogoff = () => logout()
+export const ProfilePage = ({
+  nome,
+  email,
+  telefone,
+  pontos,
+  onChange,
+  onSalvar,
+  onLogout,
+}: ProfilePageProps) => {
+  const { logout } = useAuth();
+
+  const handleLogoff = () => logout();
 
   return (
-    <View className="flex-1 bg-black p-5">      
+    <View className="flex-1 bg-black p-5">
       <View className="items-center mb-6">
         <Text className="text-white text-xl font-bold mb-4">Meu Perfil</Text>
-        <Text>Total de pontos: </Text>
-        <View className="w-20 h-20 rounded-full"> 
-
-          <Image 
-            source={require('../../assets/images/logo.png')} 
-            style={{width: '100%', height: '100%'}}
+        <Text>Total de pontos: {pontos}</Text>
+        <View className="w-20 h-20 rounded-full">
+          <Image
+            source={require("../../assets/images/logo.png")}
+            style={{ width: "100%", height: "100%" }}
             resizeMode="contain"
           />
         </View>
       </View>
-      
+
       <View className="flex flex-col gap-4">
         <View>
           <Text className="text-white mb-1">Nome:</Text>
-          <Input 
-            icon={<User size={16} color="white" />}
-          />
+          <Input icon={<User size={16} color="white" />} value={nome} />
         </View>
-        
+
         <View>
           <Text className="text-white mb-1">Telefone:</Text>
-          <Input 
-            icon={<Phone size={16} color="white" />}
-          />
+          <Input icon={<Phone size={16} color="white" />} value={telefone} />
         </View>
-        
+
         <View>
           <Text className="text-white mb-1">E-mail:</Text>
-          <Input 
-            icon={<Mail size={16} color="white" />}
-          />
+          <Input icon={<Mail size={16} color="white" />} value={email} />
         </View>
-        
+
         <View>
           <Text className="text-white mb-1">Endereço:</Text>
           <View className="flex-row items-center bg-neutral-800 rounded-xl px-3 h-10">
@@ -60,7 +75,7 @@ export const ProfilePage = () => {
           </View>
         </View>
       </View>
-      
+
       <View className="flex-1 justify-end">
         <TouchableOpacity className="items-center py-3" onPress={handleLogoff}>
           <Text className="text-white font-bold underline">SAIR</Text>
@@ -68,4 +83,4 @@ export const ProfilePage = () => {
       </View>
     </View>
   );
-} 
+};
