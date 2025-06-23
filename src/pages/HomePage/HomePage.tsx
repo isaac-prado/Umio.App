@@ -18,9 +18,14 @@ interface HomePageProps {
   produtos: Produto[];
   onPressProfile: () => void;
   onPressNotifications: () => void;
+  onPressProduct: (produto: Produto) => void;
 }
 
-export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
+export const HomePage = ({
+  produtos,
+  onPressNotifications,
+  onPressProduct,
+}: HomePageProps) => {
   const [selectedCategoria, setSelectedCategoria] = useState<number | null>(
     null,
   );
@@ -114,6 +119,7 @@ export const HomePage = ({ produtos, onPressNotifications }: HomePageProps) => {
                 name={product.nome}
                 description={product.descricao}
                 price={product.preco.toFixed(2)}
+                onPress={() => onPressProduct(product)}
               />
             ))
           )}
